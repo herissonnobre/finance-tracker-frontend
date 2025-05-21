@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeToggle } from '@/components/ThemeToggle';
-
+import React from "react";
+import { Roboto } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Finance Tracker",
   description: "Track your finance on the easy way",
 };
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-roboto",
+});
 
 export default function RootLayout({
   children,
@@ -15,15 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className='bg-gray-50 text-gray-900'
-      >
-      <header className="p-4 flex justify-end">
-        <ThemeToggle />
-      </header><main>
-
+      <body className={`${roboto.className} flex items-center justify-center`}>
         {children}
-      </main>
       </body>
     </html>
   );

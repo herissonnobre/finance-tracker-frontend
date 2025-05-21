@@ -45,8 +45,6 @@ export function LoginForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-4 max-w-md w-full"
     >
-      <h2 className="text-2xl font-bold text-center">Entrar</h2>
-
       <Input
         label="E-mail"
         type="email"
@@ -65,7 +63,11 @@ export function LoginForm() {
 
       {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
 
-      <Button type="submit" disabled={loading} className="w-full">
+      <Button
+        type="submit"
+        disabled={loading}
+        className="mx-auto px-6 bg-light-primary dark:bg-dark-primary text-light-on-primary dark:text-dark-on-primary font-medium py-2 rounded-full hover:shadow-light-1 dark:hover:shadow-dark-1 hover:opacity-[.8] focus:opacity-[.12] disabled:opacity-60 transition-colors duration-200"
+      >
         {loading ? "Entrando..." : "Entrar"}
       </Button>
 
