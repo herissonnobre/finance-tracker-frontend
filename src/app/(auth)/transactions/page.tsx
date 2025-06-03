@@ -1,7 +1,7 @@
 export default function DashboardPage() {
   return (
     <div>
-      <p>Dashboard</p>
+      <p>Transações</p>
     </div>
   );
 }
