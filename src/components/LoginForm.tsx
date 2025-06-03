@@ -43,41 +43,53 @@ export function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="space-y-4 max-w-md w-full"
+      className="flex flex-col items-center w-full px-4"
     >
-      <Input
-        label="E-mail"
-        type="email"
-        placeholder="seu@email.com"
-        {...register("email", { required: "Informe o e-mail" })}
-        error={errors.email?.message}
-      />
+      <div className="space-y-4 w-full max-w-md">
+        <Input
+          label="E-mail"
+          type="email"
+          placeholder="seu@email.com"
+          {...register("email", { required: "Informe o e-mail" })}
+          error={errors.email?.message}
+        />
 
-      <Input
-        label="Senha"
-        type="password"
-        placeholder="*********"
-        {...register("password", { required: "Informe a senha" })}
-        error={errors.password?.message}
-      />
+        <Input
+          label="Senha"
+          type="password"
+          placeholder="*********"
+          {...register("password", { required: "Informe a senha" })}
+          error={errors.password?.message}
+        />
 
-      {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+        <p className="text-body-large">
+          Esqueceu a senha?{" "}
+          <Link
+            href="/forgot-password"
+            className="text-body-large hover:underline"
+          >
+            Clique aqui.
+          </Link>
+        </p>
 
-      <Button
-        type="submit"
-        disabled={loading}
-        className="mx-auto px-6 bg-light-primary dark:bg-dark-primary text-light-on-primary dark:text-dark-on-primary font-medium py-2 rounded-full hover:shadow-light-1 dark:hover:shadow-dark-1 hover:opacity-[.8] focus:opacity-[.12] disabled:opacity-60 transition-colors duration-200"
-      >
-        {loading ? "Entrando..." : "Entrar"}
-      </Button>
+        {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
 
-      <div className="flex justify-between text-sm">
-        <Link href="/forgot-password" className="text-primary hover:underline">
-          Esqueci minha senha
-        </Link>
-        <Link href="/register" className="text-primary hover:underline">
-          Criar conta
-        </Link>
+        <Button
+          type="submit"
+          disabled={loading}
+          className="w-full px-6 bg-light-primary dark:bg-dark-primary text-light-on-primary dark:text-dark-on-primary font-medium py-2 rounded-full hover:shadow-light-1 dark:hover:shadow-dark-1 hover:opacity-[.8] focus:opacity-[.12] disabled:opacity-60 transition-colors duration-200"
+        >
+          {loading ? "Entrando..." : "Entrar"}
+        </Button>
+
+        <div className="flex justify-center">
+          <p className="text-body-large">
+            Não tem conta?{" "}
+            <Link href="/register" className="text-body-large hover:underline">
+              Registre-se aqui.
+            </Link>
+          </p>
+        </div>
       </div>
     </form>
   );
